@@ -3,6 +3,7 @@ import { SyntheticEvent, useEffect, useState } from "react";
 import IComment from "../../types/IComment";
 import axios from "axios";
 import { AiOutlineDelete, AiOutlineInfoCircle } from "react-icons/ai";
+import styles from "../../styles/comments.module.css";
 
 const Comments = () => {
   const [comments, setComments] = useState<IComment[]>([]);
@@ -17,11 +18,13 @@ const Comments = () => {
   }
 
   const elems = comments.map((it) => (
-    <div key={it.id}>
+    <div key={it.id} className={styles.grid_container}>
       <span>{it.description}</span>
       <AiOutlineDelete onClick={() => deleteCommentFromServer(it.id!)} />
       <Link href={`/comments/${it.id}`}>
-        <AiOutlineInfoCircle />
+        <a>
+          <AiOutlineInfoCircle />
+        </a>
       </Link>
     </div>
   ));
@@ -83,7 +86,7 @@ const Comments = () => {
         <input type="submit" value="Add comment" />
       </form>
       <p>{message}</p>
-      <p>{comments.length ? "click description for details" : ""}</p>
+      <h3>Comments</h3>
       {elems}
     </div>
   );

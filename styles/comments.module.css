@@ -1,0 +1,10 @@
+.grid_container {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 90% 5% 5%;
+  padding: 1rem;
+}
+
+.grid_container svg{
+    cursor: pointer;
+}
