@@ -8,7 +8,7 @@ const Comment = () => {
   const { id } = router.query;
 
   // here we set state on info from the network
-  // we could also take it from context (need to create it) 
+  // we could also take it from context (need to create it)
   // or pass the info via the Link as props
   useEffect(getComment, [id]);
 
@@ -25,7 +25,13 @@ const Comment = () => {
     return <div>Comment is undedfine .......</div>;
   }
 
-  const elem = `id : ${comment.id} , author : ${comment.author} ,desc : ${comment.description}`;
+  const elem = (
+    <div>
+      <p>id : ${comment.id}</p>
+      <p>author : {comment.author}</p>
+      <p>desc : {comment.description}</p>
+    </div>
+  );
 
   return <div>{elem}</div>;
 };
