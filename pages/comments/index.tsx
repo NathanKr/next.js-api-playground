@@ -20,7 +20,7 @@ const Comments = () => {
   const elems = comments.map((it) => (
     <div key={it.id} className={styles.grid_container}>
       <span>{it.description}</span>
-      <AiOutlineDelete onClick={() => deleteCommentFromServer(it.id!)} />
+      <AiOutlineDelete onClick={() => deleteCommentFromServerAndClient(it.id!)} />
       <Link href={`/comments/${it.id}`}>
         <a>
           <AiOutlineInfoCircle />
@@ -29,7 +29,7 @@ const Comments = () => {
     </div>
   ));
 
-  function deleteCommentFromServer(id: number): void {
+  function deleteCommentFromServerAndClient(id: number): void {
     setMessage("");
     axios
       .delete(`/api/comments/${id}`)
