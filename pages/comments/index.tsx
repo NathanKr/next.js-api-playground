@@ -1,8 +1,13 @@
 import Link from "next/link";
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import IComment from "../../types/IComment";
 import axios from "axios";
-import { AiOutlineDelete, AiOutlineInfoCircle } from "react-icons/ai";
+import {
+  AiOutlineDelete,
+  AiOutlineInfoCircle,
+  AiFillEdit,
+  AiFillFileAdd,
+} from "react-icons/ai";
 import styles from "../../styles/comments.module.css";
 
 const Comments = () => {
@@ -20,7 +25,19 @@ const Comments = () => {
   const elems = comments.map((it) => (
     <div key={it.id} className={styles.grid_container}>
       <span>{it.description}</span>
-      <AiOutlineDelete onClick={() => deleteCommentFromServerAndClient(it.id!)} />
+      <AiOutlineDelete
+        onClick={() => deleteCommentFromServerAndClient(it.id!)}
+      />
+      <Link
+        href={{
+          pathname: "/comments/edit",
+          query: {...comments[it.id!]},
+        }}
+      >
+        <a>
+          <AiFillEdit />
+        </a>
+      </Link>
       <Link href={`/comments/${it.id}`}>
         <a>
           <AiOutlineInfoCircle />
@@ -43,48 +60,12 @@ const Comments = () => {
       });
   }
 
-  function sendNewCommentToServer(comment: IComment): void {
-    setMessage("");
-    axios
-      .post("/api/comments", comment)
-      .then(function (response) {
-        setMessage("Message creation success");
-        const newComment = response.data as IComment;
-        const tempComments = [...comments];
-        tempComments.push(newComment);
-        setComments(tempComments);
-      })
-      .catch(function (error) {
-        setMessage("Message creation failure");
-      });
-  }
-
-  function addComment(evt: SyntheticEvent): void {
-    evt.preventDefault();
-    const form = evt.target as any;
-    const comment: IComment = {
-      description: form.description.value,
-      author: form.author.value,
-    };
-    sendNewCommentToServer(comment);
-    (form as HTMLFormElement).reset();
-  }
-
+  
   return (
     <div>
-      <h4>Add Comment (Notice : changes are done only on memory not disk)</h4>
-      <form onSubmit={addComment}>
-        <input
-          required
-          type="text"
-          name="description"
-          placeholder="Description"
-        />
-        <br />
-        <input required type="text" name="author" placeholder="Author" />
-        <br />
-        <input type="submit" value="Add comment" />
-      </form>
+      <Link href='/comments/create'>
+      <AiFillFileAdd/>
+      </Link>
       <p>{message}</p>
       <h3>Comments</h3>
       {elems}
