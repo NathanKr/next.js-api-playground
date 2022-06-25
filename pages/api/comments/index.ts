@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import IComment from "types/IComment";
-import { addComment, getComments } from "../../../utils/comments-storage";
+import { addComment, getComments } from "utils/comments-storage";
 
 // --- access this via /api/comments
 export default function handler(

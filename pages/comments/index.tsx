@@ -8,14 +8,18 @@ import {
   AiFillEdit,
   AiFillFileAdd,
 } from "react-icons/ai";
-import styles from "../../styles/comments.module.css";
+import styles from "styles/comments.module.css";
 
 const Comments = () => {
   const [comments, setComments] = useState<IComment[]>([]);
   const [message, setMessage] = useState("");
-  useEffect(getComments, []);
+  useEffect(getCommentsFromServer, []);
 
-  function getComments() {
+  function getComment(id: number): IComment | undefined {
+    return comments.find((it) => it.id == id);
+  }
+
+  function getCommentsFromServer() {
     fetch("/api/comments")
       .then((res) => res.json())
       .then((data) => setComments(data as IComment[]))
@@ -31,7 +35,7 @@ const Comments = () => {
       <Link
         href={{
           pathname: "/comments/edit",
-          query: {...comments[it.id!]},
+          query: { ...getComment(it.id!) },
         }}
       >
         <a>
@@ -60,11 +64,10 @@ const Comments = () => {
       });
   }
 
-  
   return (
     <div>
-      <Link href='/comments/create'>
-      <AiFillFileAdd/>
+      <Link href="/comments/create">
+        <AiFillFileAdd />
       </Link>
       <p>{message}</p>
       <h3>Comments</h3>

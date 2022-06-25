@@ -6,7 +6,7 @@ import {
   deleteComment,
   editComment,
   getComment,
-} from "../../../utils/comments-storage";
+} from "utils/comments-storage";
 
 // --- access this via e.g. the comment id /api/comments/2
 

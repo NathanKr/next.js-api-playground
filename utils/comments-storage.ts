@@ -1,6 +1,11 @@
 import IComment from "types/IComment";
-import comments from "data/comments.json";
-const path = require("path");
+import comments from 'data/comments.json';
+import fs from 'fs'
+
+function save(){
+  let data = JSON.stringify(comments);
+  fs.writeFileSync('data/comments.json', data); 
+}
 
 export function getComment(id: number): IComment | undefined {
   return comments.find((it) => it.id == id);
@@ -14,7 +19,7 @@ export function editComment(comment: IComment): boolean {
 
   comments[indexFound].author = comment.author;
   comments[indexFound].description = comment.description;
-
+  save();
   return true;
 }
 
@@ -25,6 +30,7 @@ export function deleteComment(id: number): boolean {
   }
 
   comments.splice(indexFound, 1);
+  save();
   return true;
 }
 
@@ -34,11 +40,5 @@ export function getComments(): IComment[] {
 
 export function addComment(comment: IComment): void {
   comments.push(comment as any); //todo nath fix this
+  save();
 }
-
-// todo nath
-// next.js does not recognize this
-//  export function saveComments() : void{
-//     const fullPath = path.resolve(__dirname, '../data/comments.json')
-//     writeFileSync(fullPath,JSON.stringify(comments))
-// }
