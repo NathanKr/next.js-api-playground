@@ -6,9 +6,11 @@ import {
   AiOutlineDelete,
   AiOutlineInfoCircle,
   AiFillEdit,
-  AiFillFileAdd,
+  AiOutlineFileAdd,
 } from "react-icons/ai";
+
 import styles from "styles/comments.module.css";
+import { Tooltip } from "@mui/material";
 
 const Comments = () => {
   const [comments, setComments] = useState<IComment[]>([]);
@@ -23,29 +25,39 @@ const Comments = () => {
     fetch("/api/comments")
       .then((res) => res.json())
       .then((data) => setComments(data as IComment[]))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setMessage("Fetch error");
+        console.log(err);
+      });
   }
 
   const elems = comments.map((it) => (
     <div key={it.id} className={styles.grid_container}>
       <span>{it.description}</span>
-      <AiOutlineDelete
-        onClick={() => deleteCommentFromServerAndClient(it.id!)}
-      />
+      <Tooltip title="Delete comment">
+        <a onClick={() => deleteCommentFromServerAndClient(it.id!)}>
+          <AiOutlineDelete />
+        </a>
+      </Tooltip>
+
       <Link
         href={{
           pathname: "/comments/edit",
           query: { ...getComment(it.id!) },
         }}
       >
-        <a>
-          <AiFillEdit />
-        </a>
+        <Tooltip title="Edit comment">
+          <a>
+            <AiFillEdit />
+          </a>
+        </Tooltip>
       </Link>
       <Link href={`/comments/${it.id}`}>
-        <a>
-          <AiOutlineInfoCircle />
-        </a>
+        <Tooltip title="Comment details">
+          <a>
+            <AiOutlineInfoCircle />
+          </a>
+        </Tooltip>
       </Link>
     </div>
   ));
@@ -66,11 +78,16 @@ const Comments = () => {
 
   return (
     <div>
+      <h2>Comments</h2>
+
       <Link href="/comments/create">
-        <AiFillFileAdd />
+        <Tooltip title="Add comment">
+          <a>
+            <AiOutlineFileAdd />
+          </a>
+        </Tooltip>
       </Link>
       <p>{message}</p>
-      <h3>Comments</h3>
       {elems}
     </div>
   );

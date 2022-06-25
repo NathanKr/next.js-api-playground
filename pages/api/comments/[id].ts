@@ -43,7 +43,6 @@ export default function handleCommentWithId(
     case "PATCH":
       {
         const comment: IComment = req.body as unknown as IComment;
-        console.log(req.body);
         
         assert(comment.id == id)
         console.log(comment.id , id);

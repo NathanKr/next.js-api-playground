@@ -1,9 +1,12 @@
+import { Button, Stack, TextField } from "@mui/material";
 import axios from "axios";
+import Message from "components/Message";
 import React, { SyntheticEvent, useState } from "react";
 import IComment from "types/IComment";
+import IMessage, { MessageType } from "types/IMessage";
 
 const CommentCreate = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<IMessage | undefined>(undefined);
 
   function addComment(evt: SyntheticEvent): void {
     evt.preventDefault();
@@ -17,33 +20,43 @@ const CommentCreate = () => {
   }
 
   function sendNewCommentToServer(comment: IComment): void {
-    setMessage("");
+    setMessage(undefined);
     axios
       .post("/api/comments", comment)
       .then(function (response) {
-        setMessage("Message creation success");
+        setMessage({
+          type: MessageType.Success,
+          message: "Create success",
+        });
       })
       .catch(function (error) {
-        setMessage("Message creation failure");
+        setMessage({
+          type: MessageType.Failure,
+          message: "Create failure",
+        });
       });
   }
 
   return (
     <div>
-      <a>Add Comment (Notice : changes are done only on memory not disk)</a>
+      <h2>Add Comment</h2>
       <form onSubmit={addComment}>
-        <input
-          required
-          type="text"
-          name="description"
-          placeholder="Description"
-        />
-        <br />
-        <input required type="text" name="author" placeholder="Author" />
-        <br />
-        <input type="submit" value="Add comment" />
+        <Stack spacing={2}>
+          <TextField
+            required
+            type="text"
+            name="description"
+            label="Description"
+          />
+          <TextField required type="text" name="author" label="Author" />
+          <Button variant="contained" type="submit">
+            Add comment
+          </Button>
+        </Stack>
       </form>
-      <p>{message}</p>
+      {message ? (
+        <Message type={message.type} message={message.message} />
+      ) : null}
     </div>
   );
 };
