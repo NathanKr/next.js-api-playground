@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { SyntheticEvent, useState } from "react";
-import IComment from "../../types/IComment";
+import IComment from "types/IComment";
 
 const CommentCreate = () => {
   const [message, setMessage] = useState("");

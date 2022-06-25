@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { assert } from "console";
 import type { NextApiRequest, NextApiResponse } from "next";
-import IComment from "../../../types/IComment";
+import IComment from "types/IComment";
 import {
   deleteComment,
   editComment,

@@ -1,5 +1,5 @@
-import IComment from "../types/IComment";
-import comments from "../data/comments.json";
+import IComment from "types/IComment";
+import comments from "data/comments.json";
 const path = require("path");
 
 export function getComment(id: number): IComment | undefined {
@@ -14,6 +14,7 @@ export function editComment(comment: IComment): boolean {
 
   comments[indexFound].author = comment.author;
   comments[indexFound].description = comment.description;
+
   return true;
 }
 

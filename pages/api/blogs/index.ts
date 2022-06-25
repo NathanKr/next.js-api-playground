@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import IBlog from "../../../types/IBlog";
+import IBlog from "types/IBlog";
 
 // --- access this via /api/blogs
 export default function handler(

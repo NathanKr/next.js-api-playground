@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { SyntheticEvent, useState } from "react";
-import IComment from "../../types/IComment";
+import IComment from "types/IComment";
 
 const CommentEdit = () => {
   const [message, setMessage] = useState("");
