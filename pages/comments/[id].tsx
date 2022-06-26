@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import IComment from "types/IComment";
+import IComment from "src/types/IComment";
 
 const Comment = () => {
   const router = useRouter();

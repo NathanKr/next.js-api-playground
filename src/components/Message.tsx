@@ -1,6 +1,6 @@
 import { Alert } from "@mui/material";
 import React, { FC } from "react";
-import IMessage, { MessageType } from "types/IMessage";
+import IMessage, { MessageType } from "src/types/IMessage";
 
 const Message: FC<IMessage> = ({ type, message }) => {
   return type == MessageType.Success ? (

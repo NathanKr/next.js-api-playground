@@ -1,4 +1,4 @@
-import IComment from "types/IComment";
+import IComment from "src/types/IComment";
 import comments from 'data/comments.json';
 import fs from 'fs'
 

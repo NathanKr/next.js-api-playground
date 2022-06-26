@@ -1,9 +1,9 @@
 import { Button, Stack, TextField } from "@mui/material";
 import axios from "axios";
-import Message from "components/Message";
+import Message from "src/components/Message";
 import React, { SyntheticEvent, useState } from "react";
-import IComment from "types/IComment";
-import IMessage, { MessageType } from "types/IMessage";
+import IComment from "src/types/IComment";
+import IMessage, { MessageType } from "src/types/IMessage";
 
 const CommentCreate = () => {
   const [message, setMessage] = useState<IMessage | undefined>(undefined);

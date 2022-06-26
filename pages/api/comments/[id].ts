@@ -1,12 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { assert } from "console";
 import type { NextApiRequest, NextApiResponse } from "next";
-import IComment from "types/IComment";
+import IComment from "src/types/IComment";
 import {
   deleteComment,
   editComment,
   getComment,
-} from "utils/comments-storage";
+} from "src/utils/comments-storage";
 
 // --- access this via e.g. the comment id /api/comments/2
 

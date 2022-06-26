@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import IBlog from "types/IBlog";
+import IBlog from "src/types/IBlog";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState<IBlog[]>([]);
@@ -16,7 +16,7 @@ const Blogs = () => {
       });
   }
 
-  const elems = blogs.map((it, i) => <div>{it.name}</div>);
+  const elems = blogs.map((it, i) => <div key={i}>{it.name}</div>);
 
   return (
     <div>

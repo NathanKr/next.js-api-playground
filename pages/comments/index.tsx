@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import IComment from "types/IComment";
+import IComment from "src/types/IComment";
 import axios from "axios";
 import {
   AiOutlineDelete,
