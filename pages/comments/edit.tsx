@@ -40,7 +40,6 @@ const CommentEdit = () => {
 
   return (
     <div>
-      <h2>Edit Comment</h2>
       <form onSubmit={editComment}>
         <Stack spacing={2}>
           <TextField

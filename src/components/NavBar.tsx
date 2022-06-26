@@ -1,27 +1,13 @@
-import Link from "next/link";
 import MuiTabs from "./MuiTabs";
+import styles from "styles/navbar.module.css";
+import { Divider } from "@mui/material";
 
-const NavBar = () =>{
-  return <MuiTabs/>
-}
-
-// const NavBar = () => {
-//   return (
-//     <>
-//       <Link href="/">
-//         <a>Home</a>
-//       </Link>
-//       <Link href="/comments">
-//         <a>Comments</a>
-//       </Link>
-//       <Link href="/blogs">
-//         <a>Blogs</a>
-//       </Link>
-//       <Link href="/about">
-//         <a>About</a>
-//       </Link>
-//     </>
-//   );
-// };
+const NavBar = () => {
+  return (
+    <div className={styles.NavBar}>
+      <MuiTabs />
+      </div>
+  );
+};
 
 export default NavBar;

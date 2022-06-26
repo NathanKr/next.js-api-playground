@@ -39,7 +39,6 @@ const CommentCreate = () => {
 
   return (
     <div>
-      <h2>Add Comment</h2>
       <form onSubmit={addComment}>
         <Stack spacing={2}>
           <TextField

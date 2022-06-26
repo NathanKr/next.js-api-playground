@@ -1,9 +1,12 @@
 import type { NextPage } from "next";
-import Link from "next/link";
+import { AiOutlineFileAdd } from "react-icons/ai";
+import DialogYesNo from "src/components/DialogYesNo";
 
 const Home: NextPage = () => {
   return (
-    <h1>Home</h1>
+    <div>
+      <p>this is home page</p>
+    </div>
   );
 };
 

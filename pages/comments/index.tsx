@@ -11,10 +11,13 @@ import {
 
 import styles from "styles/comments.module.css";
 import { Tooltip } from "@mui/material";
+import DialogYesNo from "src/components/DialogYesNo";
+import IMessage, { MessageType } from "src/types/IMessage";
+import Message from "src/components/Message";
 
 const Comments = () => {
   const [comments, setComments] = useState<IComment[]>([]);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<IMessage | undefined>(undefined);
   useEffect(getCommentsFromServer, []);
 
   function getComment(id: number): IComment | undefined {
@@ -26,7 +29,10 @@ const Comments = () => {
       .then((res) => res.json())
       .then((data) => setComments(data as IComment[]))
       .catch((err) => {
-        setMessage("Fetch error");
+        setMessage({
+          type: MessageType.Failure,
+          message: "Fetch error",
+        });
         console.log(err);
       });
   }
@@ -34,12 +40,20 @@ const Comments = () => {
   const elems = comments.map((it) => (
     <div key={it.id} className={styles.grid_container}>
       <span>{it.description}</span>
-      <Tooltip title="Delete comment">
-        <a onClick={() => deleteCommentFromServerAndClient(it.id!)}>
-          <AiOutlineDelete />
-        </a>
-      </Tooltip>
-
+      <DialogYesNo
+        dialogTitle={"Are you sure you want to delete this comment ?"}
+        content={"You can not recover this operation"}
+        yes={"Agree"}
+        no={"Disagree"}
+        yesClickHandler={() => deleteCommentFromServerAndClient(it.id!)}
+        noClickHandler={() => console.log("no")}
+      >
+        <Tooltip title="Delete comment">
+          <a>
+            <AiOutlineDelete />
+          </a>
+        </Tooltip>
+      </DialogYesNo>
       <Link
         href={{
           pathname: "/comments/edit",
@@ -63,23 +77,27 @@ const Comments = () => {
   ));
 
   function deleteCommentFromServerAndClient(id: number): void {
-    setMessage("");
+    setMessage(undefined);
     axios
       .delete(`/api/comments/${id}`)
       .then(function (response) {
-        setMessage("Message deletion success");
+        setMessage({
+          type: MessageType.Success,
+          message: "Message deletion success",
+        });
         const tempComments = comments.filter((it) => it.id != id);
         setComments(tempComments);
       })
       .catch(function (error) {
-        setMessage("Message deletion failure");
+        setMessage({
+          type: MessageType.Failure,
+          message: "Message deletion failure",
+        });
       });
   }
 
   return (
     <div>
-      <h2>Comments</h2>
-
       <Link href="/comments/create">
         <Tooltip title="Add comment">
           <a>
@@ -87,7 +105,9 @@ const Comments = () => {
           </a>
         </Tooltip>
       </Link>
-      <p>{message}</p>
+      {message ? (
+        <Message type={message.type} message={message.message} />
+      ) : null}
       {elems}
     </div>
   );
