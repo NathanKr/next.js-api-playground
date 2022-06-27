@@ -2,6 +2,7 @@ import IComment from "src/types/IComment";
 import comments from 'data/comments.json';
 import fs from 'fs'
 
+
 function save(){
   let data = JSON.stringify(comments);
   fs.writeFileSync('data/comments.json', data); 

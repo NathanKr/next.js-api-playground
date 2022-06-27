@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import IComment from "src/types/IComment";
+import styles from "styles/comment-details.module.css";
 
-const Comment = () => {
+const CommentDetails = () => {
   const router = useRouter();
   const [comment, setComment] = useState<IComment>();
   const { id } = router.query;
@@ -26,14 +27,23 @@ const Comment = () => {
   }
 
   const elem = (
-    <div>
-      <p>id : ${comment.id}</p>
-      <p>author : {comment.author}</p>
-      <p>desc : {comment.description}</p>
-    </div>
+    <>
+      <div className={styles.grid_item}>
+        <span>id</span>
+        <span>{comment.id}</span>
+      </div>
+      <div className={styles.grid_item}>
+        <span>author</span>
+        <span>{comment.author}</span>
+      </div>
+      <div className={styles.grid_item}>
+        <span>description</span>
+        <span>{comment.description}</span>
+      </div>
+    </>
   );
 
   return <div>{elem}</div>;
 };
 
-export default Comment;
+export default CommentDetails;

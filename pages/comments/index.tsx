@@ -108,7 +108,10 @@ const Comments = () => {
       {message ? (
         <Message type={message.type} message={message.message} />
       ) : null}
+      <div>
       {elems}
+      </div>
+      
     </div>
   );
 };

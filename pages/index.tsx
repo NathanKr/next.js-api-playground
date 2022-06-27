@@ -3,11 +3,7 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import DialogYesNo from "src/components/DialogYesNo";
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      <p>this is home page</p>
-    </div>
-  );
+  return <h1>this is Home page !</h1>;
 };
 
 export default Home;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import IBlog from "src/types/IBlog";
+import styles from "styles/blog.module.css";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState<IBlog[]>([]);
@@ -16,7 +17,11 @@ const Blogs = () => {
       });
   }
 
-  const elems = blogs.map((it, i) => <div key={i}>{it.name}</div>);
+  const elems = blogs.map((it, i) => (
+    <div className={styles.item} key={i}>
+      {it.name}
+    </div>
+  ));
 
   return (
     <div>

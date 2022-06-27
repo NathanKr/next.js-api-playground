@@ -34,11 +34,16 @@ http methods :  DELETE, GET, PATCH
 
 
 <h2>trivial handler</h2>
-
 This is hello.ts. this code handle requests to /api/hello. Handler name is arbitrary but must be export as default
 
+vercel is read only file system so on the server you can not : create , edit , delete
 
 <h2>open issues</h2>
 <ul>
 <li>there are few strange problems related to typescript - search for todo</li>
+</ul>
+
+<h2>Limitation</h2>
+<ul>
+<li>vercel is read only file system so on the server you can not : create , edit , delete</li>
 </ul>
