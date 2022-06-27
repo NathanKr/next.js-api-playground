@@ -4,7 +4,7 @@
 Notice that we implement here  
 <ul>
 <li>the client :directories public,pages</li>
-<li>the server : directories api , public</li>
+<li>the server : directories api , data</li>
 </ul>
 </p>
 
@@ -13,7 +13,10 @@ Notice that we implement here
 <p>The directory structure determine the api route (same idea as for pages) e.g. to access index.ts inside blogs you need to access /api/blogs</p>
 
 
+![tree-structure](./figs/tree-structure.png)
+
 ![tree-structure](./figs/api-tree-structure.png)
+
 
 
 <h2>API</h2>
