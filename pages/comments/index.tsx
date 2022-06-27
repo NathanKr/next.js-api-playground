@@ -97,7 +97,7 @@ const Comments = () => {
   }
 
   return (
-    <div>
+    <div className={styles.comments}>
       <Link href="/comments/create">
         <Tooltip title="Add comment">
           <a>
@@ -111,7 +111,6 @@ const Comments = () => {
       <div>
       {elems}
       </div>
-      
     </div>
   );
 };

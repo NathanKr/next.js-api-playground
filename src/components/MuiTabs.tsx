@@ -26,6 +26,7 @@ export default function MuiTabs() {
         <Tab value={PageName.Home} label="Home" />
         <Tab value={PageName.Blogs} label="Blogs" />
         <Tab value={PageName.Comments} label="Comments" />
+        <Tab value={PageName.Portfolio} label="Portfolio"/>
         <Tab value={PageName.About} label="About" />
       </Tabs>
     </div>

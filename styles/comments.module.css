@@ -1,3 +1,7 @@
+.comments{
+  margin-top:1rem;
+}
+
 .grid_container {
   width: 50%;
   display: grid;

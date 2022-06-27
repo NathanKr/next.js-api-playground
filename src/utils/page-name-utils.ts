@@ -20,6 +20,11 @@ export function getComponentUrl(name: PageName): string {
       url = "/comments";
       break;
 
+      case PageName.Portfolio:
+      url = "/portfolio";
+      break;
+
+
     default:
       throw new Error(`Unexpected PageName : ${name}`);
   }

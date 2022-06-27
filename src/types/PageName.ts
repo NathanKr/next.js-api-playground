@@ -3,6 +3,7 @@ enum PageName {
   About,
   Comments,
   Blogs,
+  Portfolio
 }
 
 export default PageName;
