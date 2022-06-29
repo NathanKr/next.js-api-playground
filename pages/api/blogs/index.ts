@@ -1,15 +1,19 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+import blogs from "data/blogs.json";
 import IBlog from "src/types/IBlog";
 
-// --- access this via /api/blogs
+// --- access this via /api
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<IBlog[]>
 ) {
-  res.status(200).json([
-    { id: 1, name: "blog1" },
-    { id: 2, name: "blog2" },
-    { id: 3, name: "blog3" },
-  ]);
+  console.log(`http method : ${req.method} , req.url : ${req.url}`);
+  switch (req.method) {
+    case "GET":
+      res.status(200).send(blogs);
+      break;
+
+    default:
+      throw `unexpected req.method ${req.method}`;
+  }
 }

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import SimpleAccordion, {
+  ISimpleAccordion,
+} from "src/components/SimpleAccordion";
 import IBlog from "src/types/IBlog";
 import styles from "styles/blog.module.css";
 
@@ -17,16 +20,14 @@ const Blogs = () => {
       });
   }
 
-  const elems = blogs.map((it, i) => (
-    <div className={styles.item} key={i}>
-      {it.name}
-    </div>
-  ));
+  const array = blogs.map((blog) => {
+    return { summary: blog.subject, details: blog.body };
+  });
 
   return (
     <div>
       <p>{message}</p>
-      {elems}
+      <SimpleAccordion items={array} />
     </div>
   );
 };

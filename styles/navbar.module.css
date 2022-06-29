@@ -1,5 +1,17 @@
 .NavBar{
-    margin-bottom: 2rem;
-    /* todo nath - not working */
+    margin-bottom: 1rem;
     font-weight:bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavBar button{
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.NavBar h1{
+    margin: 0;
+    padding: 0;
 }

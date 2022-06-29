@@ -1,12 +1,13 @@
 import { Divider } from '@mui/material';
 import React from 'react';
+import { APP_NAME } from 'src/utils/constants';
 import styles from "styles/footer.module.css";
 
 const Footer = () => {
     return (
         <div className={styles.Footer}>
             <Divider />
-            <p>© 2020-2022 NATHAN KRASNEY. ALL RIGHTS RESERVED.</p>
+            <p>© 2022 {APP_NAME}. ALL RIGHTS RESERVED.</p>
         </div>
     );
 };

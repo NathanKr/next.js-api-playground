@@ -1,6 +1,7 @@
 export default interface IComment  {
     id?: number,
     description: string,
-    author : string
+    author : string,
+    email : string
   };
   

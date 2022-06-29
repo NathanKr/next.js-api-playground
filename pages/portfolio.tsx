@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <>
-      <h1>This is Portfolio page !</h1>
+      <h2>This is Portfolio page !</h2>
       <p>
         This page is waiting for your creativity ,change this to suit your needs
       </p>

@@ -37,6 +37,10 @@ const CommentDetails = () => {
         <span>{comment.author}</span>
       </div>
       <div className={styles.grid_item}>
+        <span>email</span>
+        <span>{comment.email}</span>
+      </div>
+      <div className={styles.grid_item}>
         <span>description</span>
         <span>{comment.description}</span>
       </div>

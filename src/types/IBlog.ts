@@ -1,5 +1,6 @@
 export default interface IBlog  {
     id: number,
-    name: string
+    subject: string,
+    body : string
   };
   

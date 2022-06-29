@@ -14,6 +14,7 @@ const CommentCreate = () => {
     const comment: IComment = {
       description: form.description.value,
       author: form.author.value,
+      email: form.email.value,
     };
     sendNewCommentToServer(comment);
     (form as HTMLFormElement).reset();
@@ -41,13 +42,15 @@ const CommentCreate = () => {
     <div>
       <form onSubmit={addComment}>
         <Stack spacing={2}>
+          
+          <TextField required type="text" name="author" label="Author" />
+          <TextField required type="email" name="email" label="Email" />
           <TextField
             required
             type="text"
             name="description"
             label="Description"
           />
-          <TextField required type="text" name="author" label="Author" />
           <Button variant="contained" type="submit">
             Add comment
           </Button>

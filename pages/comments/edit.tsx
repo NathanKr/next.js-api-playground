@@ -45,18 +45,26 @@ const CommentEdit = () => {
           <TextField
             required
             type="text"
-            name="description"
-            label="Description"
-            defaultValue={comment.description}
-          />
-          <TextField
-            required
-            type="text"
             name="author"
             label="Author"
             defaultValue={comment.author}
           />
-          <Button  variant="contained" type="submit">
+          <TextField
+            required
+            type="email"
+            name="email"
+            label="Email"
+            defaultValue={comment.email}
+          />
+          <TextField
+            required
+            type="text"
+            name="description"
+            label="Description"
+            defaultValue={comment.description}
+          />
+
+          <Button variant="contained" type="submit">
             Edit comment
           </Button>
         </Stack>
