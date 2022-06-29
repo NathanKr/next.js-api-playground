@@ -103,15 +103,13 @@ const Comments = () => {
 
   return (
     <div className={styles.comments}>
-      {isProduction() ? null : (
-        <Link href="/comments/create">
-          <Tooltip title="Add comment">
-            <a>
-              <AiOutlineFileAdd />
-            </a>
-          </Tooltip>
-        </Link>
-      )}
+      <Link href="/comments/create">
+        <Tooltip title="Add comment">
+          <a>
+            <AiOutlineFileAdd />
+          </a>
+        </Tooltip>
+      </Link>
       {message ? (
         <Message type={message.type} message={message.message} />
       ) : null}
