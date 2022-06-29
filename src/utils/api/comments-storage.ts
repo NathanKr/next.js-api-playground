@@ -1,11 +1,15 @@
 import IComment from "src/types/IComment";
-import comments from 'data/comments.json';
-import fs from 'fs'
+import comments from "data/comments.json";
+import fs from "fs";
+import { isProduction } from "../common-utils";
 
 
-function save(){
-  let data = JSON.stringify(comments);
-  fs.writeFileSync('data/comments.json', data); 
+function save() {
+  // --- vercel is readonly file system so i can not save on production
+  if (!isProduction()) {
+    let data = JSON.stringify(comments);
+    fs.writeFileSync("data/comments.json", data);
+  }
 }
 
 export function getComment(id: number): IComment | undefined {

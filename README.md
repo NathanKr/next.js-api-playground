@@ -12,12 +12,9 @@ Notice that we implement here
 <p>pages and api directories are mandatoris. the file names inside api are arbitraries e.g. here hello.ts</p>
 <p>The directory structure determine the api route (same idea as for pages) e.g. to access index.ts inside blogs you need to access /api/blogs</p>
 
-
 ![tree-structure](./figs/tree-structure.png)
 
 ![tree-structure](./figs/api-tree-structure.png)
-
-
 
 <h2>API</h2>
 <h3>trivial api</h3>
@@ -30,11 +27,8 @@ check api/blogs , api/hello.ts , api/index.ts
 <h4>Handle comments and comment without id : api/comments/index.ts</h4>
 http methods : POST , GET
 
-
 <h4>Handle comment with id : api/comments/[id].ts</h4>
 http methods :  DELETE, GET, PATCH
-
-
 
 <h2>trivial handler</h2>
 This is hello.ts. this code handle requests to /api/hello. Handler name is arbitrary but must be export as default
@@ -48,5 +42,10 @@ vercel is read only file system so on the server you can not : create , edit , d
 
 <h2>Limitation</h2>
 <ul>
-<li>vercel is read only file system so on the server you can not : create , edit , delete</li>
+<li>vercel is read only file system so on the server you can not : create , edit , delete. you have few options
+<ul>
+<li>you can deploy it e.g. to digital ocean - there the file system is not read only</li>
+<li>put the file comments.json on s3</li>
+<li>use database instead of file e.g. mongodb</li>
+</ul>
 </ul>

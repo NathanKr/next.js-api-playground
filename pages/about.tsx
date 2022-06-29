@@ -4,7 +4,9 @@ const About = () => {
   return (
     <>
       <h1>This is About page !</h1>
-      <p>Change this to suit your needs</p>
+      <p>
+        This page is waiting for your creativity ,change this to suit your needs
+      </p>{" "}
     </>
   );
 };

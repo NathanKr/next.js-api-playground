@@ -3,7 +3,7 @@ import Tab from "@mui/material/Tab";
 import { SyntheticEvent, useState } from "react";
 import PageName from "src/types/PageName";
 import { useRouter } from "next/router";
-import { getComponentUrl } from "src/utils/page-name-utils";
+import { getComponentUrl } from "src/utils/client/page-name-utils";
 
 export default function MuiTabs() {
   const [tabValue, setTabValue] = useState<PageName>(PageName.Home);

@@ -14,6 +14,7 @@ import { Tooltip } from "@mui/material";
 import DialogYesNo from "src/components/DialogYesNo";
 import IMessage, { MessageType } from "src/types/IMessage";
 import Message from "src/components/Message";
+import { isProduction } from "src/utils/common-utils";
 
 const Comments = () => {
   const [comments, setComments] = useState<IComment[]>([]);
@@ -40,32 +41,36 @@ const Comments = () => {
   const elems = comments.map((it) => (
     <div key={it.id} className={styles.grid_container}>
       <span>{it.description}</span>
-      <DialogYesNo
-        dialogTitle={"Are you sure you want to delete this comment ?"}
-        content={"You can not recover this operation"}
-        yes={"Agree"}
-        no={"Disagree"}
-        yesClickHandler={() => deleteCommentFromServerAndClient(it.id!)}
-        noClickHandler={() => console.log("no")}
-      >
-        <Tooltip title="Delete comment">
-          <a>
-            <AiOutlineDelete />
-          </a>
-        </Tooltip>
-      </DialogYesNo>
-      <Link
-        href={{
-          pathname: "/comments/edit",
-          query: { ...getComment(it.id!) },
-        }}
-      >
-        <Tooltip title="Edit comment">
-          <a>
-            <AiFillEdit />
-          </a>
-        </Tooltip>
-      </Link>
+      {isProduction() ? null : (
+        <DialogYesNo
+          dialogTitle={"Are you sure you want to delete this comment ?"}
+          content={"You can not recover this operation"}
+          yes={"Agree"}
+          no={"Disagree"}
+          yesClickHandler={() => deleteCommentFromServerAndClient(it.id!)}
+          noClickHandler={() => console.log("no")}
+        >
+          <Tooltip title="Delete comment">
+            <a>
+              <AiOutlineDelete />
+            </a>
+          </Tooltip>
+        </DialogYesNo>
+      )}
+      {isProduction() ? null : (
+        <Link
+          href={{
+            pathname: "/comments/edit",
+            query: { ...getComment(it.id!) },
+          }}
+        >
+          <Tooltip title="Edit comment">
+            <a>
+              <AiFillEdit />
+            </a>
+          </Tooltip>
+        </Link>
+      )}
       <Link href={`/comments/${it.id}`}>
         <Tooltip title="Comment details">
           <a>
@@ -98,19 +103,19 @@ const Comments = () => {
 
   return (
     <div className={styles.comments}>
-      <Link href="/comments/create">
-        <Tooltip title="Add comment">
-          <a>
-            <AiOutlineFileAdd />
-          </a>
-        </Tooltip>
-      </Link>
+      {isProduction() ? null : (
+        <Link href="/comments/create">
+          <Tooltip title="Add comment">
+            <a>
+              <AiOutlineFileAdd />
+            </a>
+          </Tooltip>
+        </Link>
+      )}
       {message ? (
         <Message type={message.type} message={message.message} />
       ) : null}
-      <div>
-      {elems}
-      </div>
+      <div>{elems}</div>
     </div>
   );
 };
