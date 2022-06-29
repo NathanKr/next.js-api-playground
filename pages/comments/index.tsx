@@ -11,10 +11,10 @@ import {
 
 import styles from "styles/comments.module.css";
 import { Tooltip } from "@mui/material";
-import DialogYesNo from "src/components/DialogYesNo";
+import DialogYesNo from "src/components/gen-ui/DialogYesNo";
 import IMessage, { MessageType } from "src/types/IMessage";
-import Message from "src/components/Message";
 import { isProduction } from "src/utils/common-utils";
+import Message from "src/components/gen-ui/Message";
 
 const Comments = () => {
   const [comments, setComments] = useState<IComment[]>([]);

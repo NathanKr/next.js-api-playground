@@ -1,8 +1,8 @@
 import { FC, ReactNode } from "react";
 import Footer from "./Footer";
-import NavBar from "./NavBar";
 import styles from "styles/layout.module.css";
 import { Divider } from "@mui/material";
+import NavBar from "./gen-ui/NavBar";
 
 interface IProps {
   children: ReactNode;

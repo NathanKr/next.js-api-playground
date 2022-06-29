@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SimpleAccordion, {
   ISimpleAccordion,
-} from "src/components/SimpleAccordion";
+} from "src/components/gen-ui/SimpleAccordion";
 import IBlog from "src/types/IBlog";
-import styles from "styles/blog.module.css";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState<IBlog[]>([]);

@@ -1,6 +1,6 @@
 import { Button, Stack, TextField } from "@mui/material";
 import axios from "axios";
-import Message from "src/components/Message";
+import Message from "src/components/gen-ui/Message";
 import { useRouter } from "next/router";
 import React, { SyntheticEvent, useState } from "react";
 import IComment from "src/types/IComment";
