@@ -103,6 +103,7 @@ const Comments = () => {
 
   return (
     <div className={styles.comments}>
+
       <Link href="/comments/create">
         <Tooltip title="Add comment">
           <a>
@@ -110,6 +111,7 @@ const Comments = () => {
           </a>
         </Tooltip>
       </Link>
+      <h2>Comments</h2>
       {message ? (
         <Message type={message.type} message={message.message} />
       ) : null}
