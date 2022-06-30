@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
+import MasonryImageList from "src/components/gen-ui/MasonryImageList";
 import Message from "src/components/gen-ui/Message";
-import SimpleAccordion from "src/components/gen-ui/SimpleAccordion";
-import IBlog from "src/types/IBlog";
 import IMessage, { MessageType } from "src/types/IMessage";
+import IProject from "src/types/IProject";
 
-const Blogs = () => {
-  const [blogs, setBlogs] = useState<IBlog[]>([]);
+const Projects = () => {
+  const [projects, setProjects] = useState<IProject[]>([]);
   const [message, setMessage] = useState<IMessage | undefined>(undefined);
 
   useEffect(getBlogsFromServer, []);
 
   function getBlogsFromServer() {
-    fetch("/api/blogs")
+    fetch("/api/projects")
       .then((res) => res.json())
-      .then((data) => setBlogs(data as IBlog[]))
+      .then((data) => setProjects(data as IProject[]))
       .catch((err) => {
         setMessage({
           type: MessageType.Failure,
@@ -23,20 +23,15 @@ const Blogs = () => {
       });
   }
 
-  const array = blogs.map((blog) => {
-    return { summary: blog.subject, details: blog.body };
-  });
-
   return (
     <div>
-      <h2>Blogs</h2>
-
+      <h2>Portfolio</h2>
+      <MasonryImageList projects={projects} />
       {message ? (
         <Message type={message.type} message={message.message} />
       ) : null}
-      <SimpleAccordion items={array} />
     </div>
   );
 };
 
-export default Blogs;
+export default Projects;

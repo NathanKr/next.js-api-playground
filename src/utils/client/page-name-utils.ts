@@ -21,7 +21,7 @@ export function getComponentUrl(name: PageName): string {
       break;
 
       case PageName.Portfolio:
-      url = "/portfolio";
+      url = "/projects";
       break;
 
 
